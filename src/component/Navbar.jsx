@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
-
+import { Link, useLocation } from "react-router-dom";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    // const [bgColor, setbgColor] = useState("bg-transparent");
+    const location = useLocation();
+    const { pathname } = location;
+    const activeRoute = pathname.split("/");
+
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -12,10 +19,12 @@ const Navbar = () => {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+
+
     }, []);
 
     return (
-        <nav className={`fixed w-full z-20 top-0 start-0 transition-all duration-300 ${isScrolled ? "bg-[#021713] shadow-2xl" : "bg-transparent shadow-md"}`}>
+        <nav className={`fixed w-full z-20 top-0 start-0 transition-all duration-300 ${isScrolled || activeRoute[2] !== "" ? "bg-[#021713]" : "bg-transparent"}`}>
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="#" className="flex items-center space-x-2 rtl:space-x-reverse">
                     <img src="/assets/images/logowithtext.png" className="h-15" alt="Al Amin Logo" />
@@ -57,8 +66,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="hidden xl:block">
-                    <a href="#" className="bg-yellow-400 flex gap-2 py-2 px-6 rounded-lg font-semibold items-center text-slate-800">
-                        <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                    <a href="#" className="bg-yellow-400 flex gap-2 py-2 px-6 rounded-lg font-semibold items-center text-slate-800 ">
+                        <FaArrowRightToBracket className="mr-1" />
                         Daftar Sekarang
                     </a>
                 </div>

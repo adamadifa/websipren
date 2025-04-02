@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 //import js cookie
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 const Api = axios.create({
 
@@ -27,13 +27,13 @@ Api.interceptors.response.use(function (response) {
     if (401 === error.response.status) {
 
         //remove token
-        Cookies.remove('token');
+        //Cookies.remove('token');
 
         //remove user
-        Cookies.remove('user');
+        //Cookies.remove('user');
 
         //remove permissions
-        Cookies.remove('permissions');
+        //Cookies.remove('permissions');
 
         //redirect "/"
         window.location = '/';
