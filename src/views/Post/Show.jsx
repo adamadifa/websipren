@@ -30,7 +30,7 @@ const PostShow = () => {
     return (
         <LayoutPost>
             {loading ? (
-                <p>Loading...</p> // Tambahkan indikator loading
+                <p>Loading...</p>
             ) : post ? (
                 <Detailnews data={post} />
             ) : (

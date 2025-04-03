@@ -2,7 +2,6 @@ import DateID from "../utils/DateID";
 
 const Detailnews = (props) => {
     const { data } = props
-    { console.log(data) }
     return (
         <section id="berita" className="pt-32">
             <div className="container mx-auto px-4">
