@@ -1,3 +1,4 @@
+import Skeleton from "react-loading-skeleton";
 import DateID from "../utils/DateID";
 
 const Detailnews = (props) => {
@@ -6,50 +7,57 @@ const Detailnews = (props) => {
     return (
         <section id="berita" className="pt-32">
             <div className="container mx-auto px-4">
-                <nav className="flex mb-5" aria-label="Breadcrumb">
-                    <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                        <li className="inline-flex items-center">
-                            <a href="#"
-                                className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                                <svg className="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                                </svg>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <div className="flex items-center">
-                                <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                        strokeWidth="2" d="m1 9 4-4-4-4" />
-                                </svg>
+                {data === null ? <Skeleton /> : (
+                    <nav className="flex mb-5" aria-label="Breadcrumb">
+                        <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                            <li className="inline-flex items-center">
                                 <a href="#"
-                                    className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
-                            </div>
-                        </li>
-                        <li aria-current="page">
-                            <div className="flex items-center">
-                                <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                        strokeWidth="2" d="m1 9 4-4-4-4" />
-                                </svg>
-                                <span
-                                    className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">{data.title}</span>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
-
+                                    className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                                    <svg className="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                                    </svg>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <div className="flex items-center">
+                                    <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                            strokeWidth="2" d="m1 9 4-4-4-4" />
+                                    </svg>
+                                    <a href="#"
+                                        className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
+                                </div>
+                            </li>
+                            <li aria-current="page">
+                                <div className="flex items-center">
+                                    <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                            strokeWidth="2" d="m1 9 4-4-4-4" />
+                                    </svg>
+                                    <span
+                                        className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">{data.title}</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+                )}
                 <div className="flex flex-col justify-start space-x-4 md:flex-row ">
                     <div id="detailberita" className="md:w-7/12 w-full">
-                        <img src={data.image} alt="" className="rounded-lg mb-5 w-full h-96 object-cover" />
-                        <h4 className="text-4xl text-slate-900 mb-2 font-bold">{data.title}</h4>
-                        <span className="text-slate-400 text-sm mb-3">{DateID(new Date(data.created_at))}</span>
-                        <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
+                        {data === null ? <Skeleton height={200} /> : (
+                            <img src={data.image} alt="" className="rounded-lg mb-5 w-full h-96 object-cover" />
+                        )}
+                        {data !== null && (
+                            <>
+                                <h4 className="text-4xl text-slate-900 mb-2 font-bold">{data.title}</h4>
+                                <span className="text-slate-400 text-sm mb-3">{DateID(new Date(data.created_at))}</span>
+                                <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
+                            </>
+                        )}
                         <div className="flex justify-start space-x-2 py-5">
                             <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank"
                                 className="bg-blue-600 p-2 rounded-full">

@@ -1,41 +1,41 @@
 
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Api from "../../services/Api";
 import LayoutPost from "../../layouts/LayoutPost";
 import Detailnews from "../../component/Detailnews";
+import Skeleton from "react-loading-skeleton";
 
 const PostShow = () => {
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true); // Tambahkan state loading
-
     const { slug } = useParams();
+
+
     const fetchDataPost = async () => {
-        try {
-            setLoading(true); // Set loading ke true saat mulai fetch
-            const response = await Api.get(`api/public/posts/${slug}`);
+        //setLoadingPosts "true"
+        setLoading(true);
+
+        //fetch data
+        await Api.get(`/api/public/posts/${slug}`).then((response) => {
+            //assign response to state "posts"
             setPost(response.data.data);
-            document.title = `${response.data.data.title} | Pesantren Persis 80 Al Amin Sindangkasih`;
-        } catch (error) {
-            console.error("Gagal mengambil data postingan:", error);
-        } finally {
-            setLoading(false); // Set loading ke false setelah fetch selesai
-        }
+
+            //setLoadingPosts "false"
+            setTimeout(() => { setLoading(false) }, 1000);
+        });
     };
 
+
     useEffect(() => {
+        //call method "fetchDataPosts"
         fetchDataPost();
-    }, [slug]);
+    }, []);
 
     return (
         <LayoutPost>
-            {loading ? (
-                <p>Loading...</p> // Tambahkan indikator loading
-            ) : post ? (
-                <Detailnews data={post} />
-            ) : (
-                <p>Data tidak ditemukan</p> // Tampilkan pesan jika data tidak ada
-            )}
+            {loading ? <Detailnews data={null} /> : <Detailnews data={post} />}
+
         </LayoutPost>
     );
 
