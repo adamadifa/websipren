@@ -40,8 +40,10 @@ const Navbar = () => {
                 </button>
                 <div className={`${isNavOpen ? "block" : "hidden"} w-full xl:block xl:w-auto`}>
                     <ul className="flex flex-col font-medium p-4 xl:p-0 mt-4 border border-[#125a50] rounded-lg bg-[#125a50] xl:bg-transparent xl:space-x-8 xl:flex-row xl:mt-0 xl:border-0">
-                        <li><a href="#" className="block py-2 px-3 lg:bg-transparent lg:text-yellow-400">Beranda</a></li>
-                        <li><a href="#" className="block py-2 px-3 text-white rounded-sm hover:text-yellow-400">Tentang Kami</a></li>
+                        <li>
+                            <Link to={"/"} className="block py-2 px-3 lg:bg-transparent lg:text-yellow-400">Beranda</Link>
+                        </li>
+                        <li><a href="#tentangkami" className="block py-2 px-3 text-white rounded-sm hover:text-yellow-400">Tentang Kami</a></li>
                         <li className="relative">
                             <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="flex items-center justify-between w-full py-2 px-3 text-white rounded-sm hover:text-yellow-400 lg:w-auto">
                                 Jenjang Pendidikan

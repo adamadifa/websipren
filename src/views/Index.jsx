@@ -11,6 +11,7 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [lastPost, setLastPost] = useState([]);
     const [loadingPosts, setLoadingPosts] = useState(true);
+    const [loadingLastPost, setLoadingLastPost] = useState(true);
 
     const fetchDataPosts = async () => {
         //setLoadingPosts "true"
@@ -30,7 +31,7 @@ const Home = () => {
         setLoadingPosts(true);
         await Api.get("/api/public/posts/getlastposthomepage").then((response) => {
             setLastPost(response.data.data);
-
+            setLoadingLastPost(false);
             //setLoadingPosts(false);
         })
     }
@@ -46,7 +47,7 @@ const Home = () => {
             <LayoutHome>
                 <TentangKami />
                 <Jenjang />
-                <News posts={posts} loadingPosts={loadingPosts} lastPost={lastPost} />
+                <News posts={posts} loadingPosts={loadingPosts} lastPost={lastPost} loadingLastPost={loadingLastPost} />
             </LayoutHome>
         </>
     )

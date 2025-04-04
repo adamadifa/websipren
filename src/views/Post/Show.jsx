@@ -8,7 +8,9 @@ import Skeleton from "react-loading-skeleton";
 
 const PostShow = () => {
     const [post, setPost] = useState(null);
+    const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true); // Tambahkan state loading
+    const [loadingPosts, setLoadingPosts] = useState(true);
     const { slug } = useParams();
 
 
@@ -21,21 +23,29 @@ const PostShow = () => {
             //assign response to state "posts"
             setPost(response.data.data);
 
-            //setLoadingPosts "false"
-            setTimeout(() => { setLoading(false) }, 1000);
+            setLoading(false);
+            //setTimeout(() => { setLoading(false) }, 1000);
         });
     };
+
+
+    const fetchDataPosts = async () => {
+        await Api.get("/api/public/posts/getposthomepage").then((response) => {
+            setPosts(response.data.data);
+            setLoadingPosts(false);
+        });
+    }
 
 
     useEffect(() => {
         //call method "fetchDataPosts"
         fetchDataPost();
-    }, []);
+        fetchDataPosts();
+    }, [slug]);
 
     return (
         <LayoutPost>
-            {loading ? <Detailnews data={null} /> : <Detailnews data={post} />}
-
+            <Detailnews data={post} loading={loading} posts={posts} loadingPosts={loadingPosts} />
         </LayoutPost>
     );
 

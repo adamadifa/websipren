@@ -1,13 +1,14 @@
 import Skeleton from "react-loading-skeleton";
 import DateID from "../utils/DateID";
+import AlertDataEmpty from "./general/AlertDataEmpty";
+import { Link } from "react-router-dom";
 
 const Detailnews = (props) => {
-    const { data } = props
-    { console.log(data) }
+    const { data, loading, posts, loadingPosts } = props
     return (
         <section id="berita" className="pt-32">
             <div className="container mx-auto px-4">
-                {data === null ? <Skeleton /> : (
+                {loading ? <Skeleton /> : (
                     <nav className="flex mb-5" aria-label="Breadcrumb">
                         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                             <li className="inline-flex items-center">
@@ -18,7 +19,7 @@ const Detailnews = (props) => {
                                         <path
                                             d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                                     </svg>
-                                    Home
+                                    Beranda
                                 </a>
                             </li>
                             <li>
@@ -29,7 +30,7 @@ const Detailnews = (props) => {
                                             strokeWidth="2" d="m1 9 4-4-4-4" />
                                     </svg>
                                     <a href="#"
-                                        className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
+                                        className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">{data.category.name}</a>
                                 </div>
                             </li>
                             <li aria-current="page">
@@ -48,10 +49,10 @@ const Detailnews = (props) => {
                 )}
                 <div className="flex flex-col justify-start space-x-4 md:flex-row ">
                     <div id="detailberita" className="md:w-7/12 w-full">
-                        {data === null ? <Skeleton height={200} /> : (
+                        {loading ? <Skeleton height={300} /> : (
                             <img src={data.image} alt="" className="rounded-lg mb-5 w-full h-96 object-cover" />
                         )}
-                        {data !== null && (
+                        {loading ? <Skeleton height={50} /> : (
                             <>
                                 <h4 className="text-4xl text-slate-900 mb-2 font-bold">{data.title}</h4>
                                 <span className="text-slate-400 text-sm mb-3">{DateID(new Date(data.created_at))}</span>
@@ -96,56 +97,28 @@ const Detailnews = (props) => {
                     </div>
                     <div id="lastfivenews" className="w-full lg:w-4/12">
                         <h4 className="text-2xl font-bold mb-3 border-b-2 py-2 border-slate-400">Berita Terbaru</h4>
-                        <div className="flex mb-4">
-                            <img src="https://placehold.co/100" alt="" className="rounded-xl" />
-                            <div className="ml-5">
-                                <h4 className="text-2xl text-slate-900  font-bold">Berita Terbaru</h4>
-                                <span className="text-slate-500 text-sm">Rabu, 27 Maret 2025</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex mb-4">
-                            <img src="https://placehold.co/100" alt="" className="rounded-lg" />
-                            <div className="ml-5">
-                                <h4 className="text-2xl text-slate-900  font-bold">Berita Terbaru</h4>
-                                <span className="text-slate-500 text-sm">Rabu, 27 Maret 2025</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex mb-4">
-                            <img src="https://placehold.co/100" alt="" className="rounded-lg" />
-                            <div className="ml-5">
-                                <h4 className="text-2xl text-slate-900  font-bold">Berita Terbaru</h4>
-                                <span className="text-slate-500 text-sm">Rabu, 27 Maret 2025</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex mb-4">
-                            <img src="https://placehold.co/100" alt="" className="rounded-lg" />
-                            <div className="ml-5">
-                                <h4 className="text-2xl text-slate-900  font-bold">Berita Terbaru</h4>
-                                <span className="text-slate-500 text-sm">Rabu, 27 Maret 2025</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex mb-4">
-                            <img src="https://placehold.co/100" alt="" className="rounded-lg" />
-                            <div className="ml-5">
-                                <h4 className="text-2xl text-slate-900  font-bold">Berita Terbaru</h4>
-                                <span className="text-slate-500 text-sm">Rabu, 27 Maret 2025</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                </p>
-                            </div>
-                        </div>
+                        {loadingPosts ? (<Skeleton height={100} width={100} />) :
+                            (
+                                posts.map((post, index) => (
+                                    <Link to={`/posts/${post.slug}`} className="text-decoration-none" key={index}>
+                                        <div className="flex mb-4">
+                                            <div className="h-20 w-20 object-cover">
+                                                <img src={post.image} alt="" className="rounded-xl w-full h-full object-cover" />
+                                            </div>
+                                            <div className="ml-5">
+                                                <h4 className="text-xl text-slate-900  font-bold">{post.title}</h4>
+                                                <span className="text-slate-500 text-sm">Rabu, 27 Maret 2025</span>
+                                                <p dangerouslySetInnerHTML={{ __html: post.content.substring(0, 120) }}>
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))
+
+                            )
+                        }
+
                     </div>
                 </div>
             </div>

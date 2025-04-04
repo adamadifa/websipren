@@ -1,18 +1,24 @@
+import { motion } from "motion/react" // Perubahan dari "motion/react" ke "framer-motion"
+
 const Jumbotron = () => {
     return (
         <section className="bg-transparent lg:p-0 lg:h-[calc(100vh-192px)]" id="jumbotron">
-            <div className="px-4 mx-auto max-w-screen-xl text-center py-24 md:px-16 md:py-16 xl:py-16 flex flex-col lg:flex-row items-center">
+            <div className="px-4 mx-auto max-w-screen-2xl text-center py-24 md:px-16 md:py-16 xl:py-16 flex flex-col lg:flex-row items-center">
                 {/* Image Section */}
-                <div className="order-first lg:order-last" id="model-1">
+
+                <motion.div
+                    animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 2 }}
+                    className="order-first lg:order-last" id="model-1">
                     <img
                         src="/assets/images/model1.png"
                         alt="Model"
                         className="mb-5 md:max-w-max md:min-w-max md:h-[calc(100vh-255px)] h-96"
                     />
-                </div>
+                </motion.div>
 
                 {/* Text Section */}
-                <div id="highlight">
+                <motion.div initial={{ x: '-30%', opacity: 0 }} whileInView={{ x: '0%', opacity: 1 }} transition={{ duration: 0.8 }}
+                    id="highlight">
                     <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none lg:text-left text-white xl:text-6xl">
                         Berakhlak Mulia, Tafaquh Fiddien, Berprestasi
                     </h1>
@@ -30,7 +36,7 @@ const Jumbotron = () => {
                             Learn more
                         </a>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
