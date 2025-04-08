@@ -7,7 +7,8 @@ import axios from 'axios'
 const Api = axios.create({
 
     //set endpoint API
-    baseURL: 'http://127.0.0.1:8000',
+    // baseURL: 'https://siprenpas.my.id',
+    baseURL: 'http://localhost:8000',
 
     //set header axios
     headers: {

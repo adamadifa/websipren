@@ -2,6 +2,7 @@ import Skeleton from "react-loading-skeleton";
 import DateID from "../utils/DateID";
 import AlertDataEmpty from "./general/AlertDataEmpty";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Detailnews = (props) => {
     const { data, loading, posts, loadingPosts } = props
@@ -54,7 +55,7 @@ const Detailnews = (props) => {
                         )}
                         {loading ? <Skeleton height={50} /> : (
                             <>
-                                <h4 className="text-4xl text-slate-900 mb-2 font-bold">{data.title}</h4>
+                                <h1 className="text-4xl text-slate-900 mb-2 font-bold">{data.title}</h1>
                                 <span className="text-slate-400 text-sm mb-3">{DateID(new Date(data.created_at))}</span>
                                 <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
                             </>

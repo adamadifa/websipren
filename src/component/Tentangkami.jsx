@@ -3,15 +3,17 @@ const TentangKami = () => {
     return (
         <section className="py-10" id="tentangkami">
             <div className="flex flex-col items-center lg:gap-10 gap-5 lg:items-start lg:flex-row max-w-screen-xl mx-auto">
-                <motion.div initial={{ x: '-30%', opacity: 0 }} whileInView={{ x: '0%', opacity: 1 }} transition={{ duration: 0.8 }} className="flex-1 w-3/5 md:max-w-60 h-auto lg:w-full">
+                <motion.div initial={{ x: '-30%', opacity: 0 }}
+                    whileInView={{ x: '0%', opacity: 1 }}
+                    transition={{ duration: 0.8 }} className="w-3/5 md:max-w-60 h-auto lg:w-full">
                     <img src="/assets/images/paridwajdi.png" className="w-full" alt="Parid Wajdi" />
                 </motion.div>
-                <div className="lg:flex-2">
-                    <div className="lg:flex-2">
+                <div className="lg:flex w-4/5">
+                    <div className="lg:flex-col">
                         <motion.div initial={{ y: '20%', opacity: 0 }} whileInView={{ y: '0%', opacity: 1 }} transition={{ duration: 0.8 }}>
-                            <h4 className="text-4xl text-slate-900 mb-5 font-bold text-center lg:text-left">
+                            <h2 className="text-4xl text-slate-900 mb-5 font-bold text-center lg:text-left">
                                 Tentang Pesantren
-                            </h4>
+                            </h2>
                         </motion.div>
                         <motion.div initial={{ y: '30%', opacity: 0 }} whileInView={{ y: '0%', opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }}>
                             <p className="text-slate-500 px-5 lg:px-0">
@@ -38,7 +40,11 @@ const TentangKami = () => {
                                 lainnya.
                             </p>
                         </motion.div>
+
                     </div>
+                </div>
+                <div id="iklanppdb" className="w-1/5">
+                    <img src="/assets/images/iklanppdb.jpg" alt="" />
                 </div>
             </div>
         </section>

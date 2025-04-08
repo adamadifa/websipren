@@ -9,13 +9,9 @@ const News = (props) => {
             <div className="flex flex-col lg:flex-row  mx-auto max-w-screen-xl gap-2">
                 <Cardheadlinenews data={props.lastPost} loading={props.loadingLastPost} />
                 <div id="lastfivenews" className="w-full lg:w-4/12">
-                    {props.posts.length === 0 ? (
-                        <AlertDataEmpty />
-                    ) : (
-                        props.posts.map((post, index) => (
-                            <Cardnews key={index} data={post} loading={props.loadingPosts} />
-                        ))
-                    )}
+                    {props.posts.map((post, index) => (
+                        <Cardnews key={index} data={post} loading={props.loadingPosts} />
+                    ))}
                 </div>
                 <Pengumuman />
             </div>

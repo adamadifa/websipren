@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 const Navbar = () => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     // const [bgColor, setbgColor] = useState("bg-transparent");
@@ -24,7 +24,8 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className={`fixed w-full z-20 top-0 start-0 transition-all duration-300 ${isScrolled || activeRoute[2] !== "" ? "bg-[#021713]" : "bg-transparent"}`}>
+        // console.log(activeRoute[2]),
+        <nav className={`fixed w-full z-20 top-0 start-0 transition-all duration-300 ${isScrolled || activeRoute[2] !== undefined ? "bg-[#021713]" : "bg-transparent"}`}>
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="#" className="flex items-center space-x-2 rtl:space-x-reverse">
                     <img src="/assets/images/logowithtext.png" className="h-15" alt="Al Amin Logo" />
@@ -43,8 +44,15 @@ const Navbar = () => {
                         <li>
                             <Link to={"/"} className="block py-2 px-3 lg:bg-transparent lg:text-yellow-400">Beranda</Link>
                         </li>
-                        <li><a href="#tentangkami" className="block py-2 px-3 text-white rounded-sm hover:text-yellow-400">Tentang Kami</a></li>
-                        <li className="relative">
+                        <li><button onClick={() => {
+                            const element = document.getElementById('tentangkami');
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }} className="block py-2 px-3 text-white rounded-sm hover:text-yellow-400 cursor-pointer">Tentang Kami</button></li>
+                        <li><button onClick={() => {
+                            const element = document.getElementById('jenjangpendidikan');
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }} className="block py-2 px-3 text-white rounded-sm hover:text-yellow-400 cursor-pointer">Jenjang Pendidikan</button></li>
+                        {/* <li className="relative">
                             <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="flex items-center justify-between w-full py-2 px-3 text-white rounded-sm hover:text-yellow-400 lg:w-auto">
                                 Jenjang Pendidikan
                                 <svg className="w-2.5 h-2.5 ml-2.5" viewBox="0 0 10 6">
@@ -63,7 +71,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             )}
-                        </li>
+                        </li> */}
                         <li><a href="#" className="block py-2 px-3 text-white rounded-sm hover:text-yellow-400">Sustainable Kurikulum</a></li>
                     </ul>
                 </div>

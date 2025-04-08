@@ -14,10 +14,10 @@ const Cardheadlinenews = (props) => {
                         </a>
                     }
                     {props.loading ? <Skeleton height={50} /> :
-                        <h4 className="text-4xl text-slate-900 mb-5 font-bold">{props.data.title}</h4>
+                        <h4 className="text-2xl md:text-3xl text-slate-900 mb-5 font-bold">{props.data.title}</h4>
                     }
                     {props.loading ? <Skeleton height={70} /> :
-                        <p className="text-slate-700" dangerouslySetInnerHTML={{ __html: props.data.content.substring(0, 200) }}></p>
+                        <p className="text-slate-700" dangerouslySetInnerHTML={{ __html: props.data.content.substring(0, 250) }}></p>
                     }
                 </>
             )}

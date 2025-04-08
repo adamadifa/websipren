@@ -1,9 +1,15 @@
 import Jenjang from "../component/Jenjang"
 import News from "../component/News"
+import Maps from "../component/Maps"
 import TentangKami from "../component/Tentangkami"
 import LayoutHome from "../layouts/LayoutHome"
 import Api from "../services/Api"
 import { useState, useEffect } from "react"
+import Sebaranalumni from "../component/Sebaranalumni"
+import Bannerpendaftaran from "../component/Bannerpendaftran"
+import Programunggulan from "../component/Programunggulan"
+import Ekstrakurikuler from "../component/Ekstrakurikuler"
+
 
 const Home = () => {
     document.title = 'Home | Pesantren Persis 80 Al Amin Sindangkasih'
@@ -47,7 +53,12 @@ const Home = () => {
             <LayoutHome>
                 <TentangKami />
                 <Jenjang />
+                <Sebaranalumni />
+                <Programunggulan />
+                <Bannerpendaftaran />
+                <Ekstrakurikuler />
                 <News posts={posts} loadingPosts={loadingPosts} lastPost={lastPost} loadingLastPost={loadingLastPost} />
+                <Maps />
             </LayoutHome>
         </>
     )

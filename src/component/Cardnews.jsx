@@ -14,13 +14,13 @@ const Cardnews = (props) => {
                         <img src={props.data.image} alt="" className="rounded-xl w-full h-full object-cover" />
                     </div>
                     <div className="ml-5 w-full">
-                        <h4 className="text-2xl text-slate-900 font-bold">
+                        <h4 className="md:text-2xl text-xl text-slate-900 font-bold">
                             {props.data.title.length > 50
                                 ? `${props.data.title.substring(0, 50)}...`
                                 : props.data.title}
                         </h4>
                         <span className="text-slate-500 text-sm">{DateID(new Date(props.data.created_at))}</span>
-                        <p dangerouslySetInnerHTML={{ __html: props.data.content.substring(0, 120) }}></p>
+                        <p dangerouslySetInnerHTML={{ __html: props.data.content.substring(0, 150) }}></p>
                     </div>
                 </div>
             </Link>
